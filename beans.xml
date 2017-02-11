@@ -2,5 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean id="person" class="com.jithu.spring.Java_spring.Person"></bean>
+	<bean id="person" class="com.jithu.spring.Java_spring.Person">
+		<constructor-arg name="name" value="Bob" type="String"></constructor-arg>
+		<constructor-arg name="id" value="567" type="int"></constructor-arg>
+		<property name="taxId" value="2121"></property>
+	</bean>
+	<bean id="Address" class="com.jithu.spring.Java_spring.Address">
+		<constructor-arg name="street" value="Garden Glen" type="String"></constructor-arg>
+		<constructor-arg name="zipcode" value="K2G 1E4" type="String"></constructor-arg>
+	</bean>
 </beans>
