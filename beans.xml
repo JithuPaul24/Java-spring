@@ -1,14 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	<bean id="person" class="com.jithu.spring.Java_spring.Person">
+	<bean id="person" class="com.jithu.spring.Java_spring.Person"
+		scope="prototype">
 		<constructor-arg name="name" value="Bob" type="String"></constructor-arg>
 		<constructor-arg name="id" value="567" type="int"></constructor-arg>
 		<property name="taxId" value="2121"></property>
+		<property name="address" ref="address"></property>
 	</bean>
-	<bean id="Address" class="com.jithu.spring.Java_spring.Address">
-		<constructor-arg name="street" value="Garden Glen" type="String"></constructor-arg>
-		<constructor-arg name="zipcode" value="K2G 1E4" type="String"></constructor-arg>
+	<bean id="address" class="com.jithu.spring.Java_spring.Address">
+		<constructor-arg name="street" value="Garden Glen"></constructor-arg>
+		<constructor-arg name="zipcode" value="K2G 1E4"></constructor-arg>
+	</bean>
+	<bean id="address2" class="com.jithu.spring.Java_spring.Address"
+		p:street="overs lane" p:zipcode="2255"></bean>
+	<bean id="customer" class="com.jithu.spring.Java_spring.Customer">
+		<constructor-arg>
+			<list>
+				<value>George</value>
+				<value>Alan</value>
+				<value>Mathew</value>
+				<value>Campell</value>
+				<value>Marc</value>
+				<value>Broccard</value>
+			</list>
+		</constructor-arg>
+		<constructor-arg value="NBO-Corporate"></constructor-arg>
+	</bean>
+	<bean id="jungle" class="com.jithu.spring.Java_spring.Jungle">
+		<property name="largest" ref="lion"></property>
+		<property name="animals">
+			<list>
+				<ref bean="lion" />
+				<ref bean="leopard" />
+				<ref bean="python" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="lion" class="com.jithu.spring.Java_spring.Animal">
+		<property name="name" value="Igor"></property>
+		<property name="type" value="Mammal"></property>
+	</bean>
+	<bean id="leopard" class="com.jithu.spring.Java_spring.Animal">
+		<property name="name" value="Chikku"></property>
+		<property name="type" value="Mammal"></property>
+	</bean>
+	<bean id="python" class="com.jithu.spring.Java_spring.Animal">
+		<property name="name" value="Slytherin"></property>
+		<property name="type" value="Reptile"></property>
 	</bean>
 </beans>
